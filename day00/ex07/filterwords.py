@@ -8,4 +8,3 @@ else:
     n = int(argv[2])
     pattern = r'[{} ]'.format(string.punctuation)
     print([el for el in re.split(pattern, argv[1]) if len(el) > n])
-

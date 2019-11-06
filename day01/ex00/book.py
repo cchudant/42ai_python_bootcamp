@@ -1,5 +1,6 @@
 from datetime import datetime
 
+
 class Book():
     """The cookbook"""
 
@@ -11,14 +12,14 @@ class Book():
         self.name = name
         self.last_update = datetime.now()
         self.creation_date = datetime.now()
-        self.recipes_list = { 'lunch': {}, 'starter': {}, 'dessert': {} }
+        self.recipes_list = {'lunch': {}, 'starter': {}, 'dessert': {}}
 
     def get_recipe_by_name(self, name):
         """Print a recipe with the name `name` and return the instance"""
 
         recipe = next((d[name] for d in self.recipes_list.values()
-                if name in d), None)
-        if recipe == None:
+                       if name in d), None)
+        if recipe is None:
             raise ValueError('name is not in recipes_list')
 
         return recipe

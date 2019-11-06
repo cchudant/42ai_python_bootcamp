@@ -1,7 +1,8 @@
 from random import randint
 
 print('This is an interactive guessing game!')
-print('You have to enter a number between 1 and 99 to find out the secret number.')
+print('You have to enter a number between 1 and 99 to find out the' +
+      'secret number.')
 print('Type \'exit\' to end the game.')
 print('Good luck!')
 
@@ -26,8 +27,8 @@ while guess != n and not exit:
 
 if not exit:
     if n == 42:
-        print('The answer to the ultimate question of life,', end='')
-        print(' the universe and everything is 42.')
+        print('The answer to the ultimate question of life,' +
+              ' the universe and everything is 42.')
     if i > 1:
         print('Congratulations, you\'ve got it!')
         print('You won in {} attempts!'.format(i))

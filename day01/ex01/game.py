@@ -6,6 +6,7 @@ class GotCharacter():
         self.first_name = first_name
         self.is_alive = is_alive
 
+
 class Stark(GotCharacter):
     """The Stark family"""
 

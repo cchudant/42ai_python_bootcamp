@@ -2,7 +2,7 @@ import os
 from time import time
 
 
-def ft_progress(ite):
+def progressbar(ite):
     def get_term_width():
         rows, columns = os.popen('stty size', 'r').read().split()
         return int(columns)

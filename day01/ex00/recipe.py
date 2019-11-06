@@ -3,7 +3,7 @@ class Recipe():
     """A recipe in the cookbook"""
 
     def __init__(self, name, cooking_lvl, cooking_time,
-            ingredients, description, recipe_type):
+                 ingredients, description, recipe_type):
 
         if type(name) is not str:
             raise ValueError("name is not a string")
@@ -18,7 +18,7 @@ class Recipe():
             raise ValueError("description is not a string")
         if recipe_type not in ['starter', 'lunch', 'dessert']:
             raise ValueError("recipe type should be one of starter, " +
-                    "lunch, dessert")
+                             "lunch, dessert")
 
         self.name = name
         self.cooking_lvl = cooking_lvl
@@ -27,12 +27,10 @@ class Recipe():
         self.description = description
         self.recipe_type = recipe_type
 
-
     def __str__(self):
         """Return the string to print with the recipe info"""
 
         return '{}: {} ({}min, {}) [level {}] [{}]'.format(
-                self.name, self.description, self.cooking_time,
-                self.recipe_type, self.cooking_lvl,
-                ', '.join(self.ingredients))
-
+               self.name, self.description, self.cooking_time,
+               self.recipe_type, self.cooking_lvl,
+               ', '.join(self.ingredients))

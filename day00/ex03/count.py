@@ -1,13 +1,14 @@
 import sys
 
-def text_analyzer(text = None):
+
+def text_analyzer(text=None):
     """This function prints the number of upper characters, lower characters,
     punctuation and spaces in a given text.
 
     Input is taken from stdin when no argument is passed.
     """
 
-    if text == None:
+    if text is None:
         print('What is the text to analyze?')
         text = input('>> ')
 
@@ -18,7 +19,7 @@ def text_analyzer(text = None):
     upper = len(list(filter(lambda x: x.isupper(), text)))
     lower = len(list(filter(lambda x: x.islower(), text)))
     punctuation = len(list(filter(
-            lambda x: x in '[.,/#!$%^&*;:{}=\-_`~()]\'"', text)))
+            lambda x: x in '[.,/#!$%^&*;:{}=\\-_`~()]"\'', text)))
     spaces = len(list(filter(lambda x: x == ' ', text)))
 
     print('The text contains %d characters:' % len(text))

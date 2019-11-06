@@ -16,6 +16,7 @@ cookbook = {
     },
 }
 
+
 def show_recipe(name):
     r = cookbook[name]
 
@@ -24,8 +25,10 @@ def show_recipe(name):
     print('To be eaten for {}.'.format(r['meal']))
     print('Takes {} minutes of cooking.'.format(r['prep_time']))
 
+
 def del_recipe(name):
     del cookbook[name]
+
 
 def add_recipe(name, ingredients, meal, prep_time):
     cookbook[name] = {
@@ -34,11 +37,12 @@ def add_recipe(name, ingredients, meal, prep_time):
         'prep_time': prep_time,
     }
 
+
 def show_cookbook():
     print('All recipes:')
     for name, r in cookbook.items():
-        print('{} ({}min - {})'
-                .format(name, r['prep_time'], r['meal']))
+        print('{} ({}min - {})'.format(name, r['prep_time'], r['meal']))
+
 
 choice = None
 while choice != '5':
@@ -87,4 +91,3 @@ while choice != '5':
             show_recipe(name)
     elif choice == '4':
         show_cookbook()
-

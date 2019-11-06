@@ -1,5 +1,6 @@
 import sys
 
+
 morse_table = {
     'A': '.-',
     'B': '-...',
@@ -39,12 +40,14 @@ morse_table = {
     '9': '----.',
 }
 
+
 def morse(s):
     def translate(c):
         c = c.upper()
         return morse_table[c]
 
     return ' '.join(map(translate, s))
+
 
 try:
     if len(sys.argv) > 1:

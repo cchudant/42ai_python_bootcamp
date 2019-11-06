@@ -13,6 +13,7 @@ class Account(object):
     def transfer(self, amount):
         self.value += amount
 
+
 class Bank(object):
     """The bank"""
 
@@ -35,21 +36,26 @@ class Bank(object):
                 acc = next((a for a in self.account if a.id == acc), None)
             elif type(acc) is str:
                 acc = next((a for a in self.account if a.name == acc), None)
+            else:
+                return False
 
             if type(acc) is not Account:
                 return False
 
-            attrs = dir(acc)
+            attrs = [a for a in dir(acc)
+                     if not (a.startswith('__') and a.endswith('__'))]
             if len(attrs) % 2 == 0:
                 return False
             if any(a for a in attrs if a.startswith('b')):
                 return False
-            if not any(a for a in attrs
-                    if a.startswith('zip') or a.startswith('addr')):
+            if not any(a for a in attrs if a.startswith('zip')):
+                return False
+            if not any(a for a in attrs if a.startswith('addr')):
                 return False
             if 'name' not in attrs or \
                     'id' not in attrs or 'value' not in attrs:
                 return False
+            return acc
 
         origin = checkaccount(self, origin)
         dest = checkaccount(self, dest)
@@ -61,6 +67,7 @@ class Bank(object):
 
         origin.transfer(-amount)
         dest.transfer(amount)
+        return True
 
     def fix_account(self, account):
         """
@@ -71,12 +78,18 @@ class Bank(object):
 
         if type(account) is int:
             account = next((a for a in self.account
-                    if a.id == account), None)
+                            if a.id == account), None)
         elif type(account) is str:
             account = next((a for a in self.account
-                    if a.name == account), None)
+                            if a.name == account), None)
+        else:
+            return False
 
-        attrs = dir(account)
+        if type(account) is not Account:
+            return False
+
+        attrs = [a for a in dir(account)
+                 if not (a.startswith('__') and a.endswith('__'))]
 
         if 'name' not in attrs:
             account.name = 'unicorn'
@@ -90,14 +103,17 @@ class Bank(object):
             if att.startswith('b'):
                 del account[att]
 
-        if not any(a for a in attrs
-                if a.startswith('zip') or a.startswith('addr')):
+        if not any(a for a in attrs if a.startswith('zip')):
             account.zip_unicorn = True
+        if not any(a for a in attrs if a.startswith('addr')):
+            account.addr_unicorn = True
 
-        attrs = dir(account)
+        attrs = [a for a in dir(account)
+                 if not (a.startswith('__') and a.endswith('__'))]
         if len(attrs) % 2 == 0:
             att = 'unicorn'
-            while att in account:
+            while att in attrs:
                 att += '-'
-            account[att] = True
+            account.__dict__[att] = True
 
+        return True
