@@ -18,5 +18,5 @@ Python 3.7
 numpy, pandas, matplotlib, tkinter and pillow need to be installed
 
 If you are using the nix package manager, open a nix-shell using
-`nix-shell default.nix` to automagically spawn a shell with the correct
+`nix-shell shell.nix` to automagically spawn a shell with the correct
 dependencies
