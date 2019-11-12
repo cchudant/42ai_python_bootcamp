@@ -3,6 +3,7 @@
 ![img](https://raw.githubusercontent.com/42-AI/bootcamp_python/master/tools/logo_v4_noir.png)
 
 Bootcamp created by 42ai, learn python for machine learning
+
 Duration: 1 week
 
 [Subjects](https://github.com/42-AI/bootcamp_python/)
